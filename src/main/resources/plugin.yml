@@ -1,0 +1,11 @@
+name: Mythology
+version: '1.0-SNAPSHOT'
+main: com.Stranger.Mythology.Main
+api-version: '1.21'
+commands:
+  pray:
+    description: Pray!
+  menu:
+    description: Basic Information about you and the world
+
+

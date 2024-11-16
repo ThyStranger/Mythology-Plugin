@@ -1,0 +1,40 @@
+format:
+  display_name: "&6%name%"
+  lore:
+    - ""
+    - ""
+
+items:
+  fractured_holy_sword:
+    name: "Fractured Holy Sword"
+    ability_name: "Pray"
+    ability_description:
+      - "Pray to the Lord to receive blessings. What can go wrong?"
+    ability_trigger: "RIGHT CLICK"
+    lore:
+      - "&eThe powerful Holy Sword used by the &o&lAngels &r&ein the ancient war."
+      - "&eAlthough fractured, it still seems to be able to communicate with another dimension?"
+    material: "GOLDEN_SWORD"
+
+  jin_lan_jia_sha_fang:
+    name: "锦襕袈裟(仿)"
+    ability_name: "功德加持"
+    ability_description:
+      - "水火不侵，不坠地狱"
+      - "&fThe wearer shall be immune to fire and drowning, and shall never descend to hell"
+    ability_trigger: "WEAR"
+    lore:
+      - "&6黑熊精成收山大神后对功德佛的锦襕袈裟念念不忘，便仿造了一个，不知为何却流落此界"
+      - "&e这袈裟，龙披一缕，免大鹏吞噬之灾；鹤挂一丝，得超凡入圣之妙。但坐处, 有万神朝礼；凡举动，有七佛随身"
+      - "——南海观世音菩萨"
+    material: "ELYTRA"
+
+  peach_wood_sword:
+    name: "桃木剑"
+    ability_name: "五雷轰顶"
+    ability_description:
+      - "&e以&l天雷&r&e轰击方圆五米之物"
+    ability_trigger: "RIGHT CLICK"
+    lore:
+      - "&d&o桃者，五木之精也，故压伏邪气者也。"
+    material: "WOODEN_SWORD"
