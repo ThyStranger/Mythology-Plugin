@@ -10,11 +10,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-public class GUIs {
+public class GUI {
+    public static HashMap<String,HashMap<String,Inventory>> GUIs=new HashMap<>();
+
     private static ItemMeta getGUIMeta(ItemMeta meta, String display_name, String lore) {
         if (lore != null) {
             meta.setLore(List.of(lore.split("\n")));

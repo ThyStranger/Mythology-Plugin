@@ -1,11 +1,12 @@
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Commands\MenuCommand.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Commands\PrayCommand.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\FileManager.java
+C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\GUIs\GUIEvents.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\GUIs\GUIs.java
-C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\InGameEvents.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Items\impl\Fractured_Holy_Sword.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Items\impl\Jin_Lan_Jia_Sha_Fang.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Items\impl\Peach_Wood_Sword.java
+C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Items\impl\View_Menu.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Items\Item.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Items\ItemEvents.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Main.java
@@ -13,6 +14,3 @@ C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\PlayerDatabase\CustomPlayer.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\PlayerDatabase\Database.java
 C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\PlayerDatabase\PlayerManager.java
-C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Trashcan\Fractured_Holy_Sword.java
-C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Trashcan\ItemSuperClass.java
-C:\Users\Tingyu\Desktop\Computering\Java\first_plugin\src\main\java\com\Stranger\Mythology\Trashcan\Jin_Lan_Jia_Sha_Fang.java

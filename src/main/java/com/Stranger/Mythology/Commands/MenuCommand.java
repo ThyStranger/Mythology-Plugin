@@ -1,6 +1,6 @@
 package com.Stranger.Mythology.Commands;
 
-import com.Stranger.Mythology.GUIs.GUIs;
+import com.Stranger.Mythology.GUIs.GUI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,7 +25,7 @@ public class MenuCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player player){
 //            Inventory menu = Bukkit.createInventory(player,54, ChatColor.BOLD+""+ChatColor.BLACK+"Your Journey on This World");
-            Inventory menu = new GUIs().MenuGUI(player);
+            Inventory menu = new GUI().MenuGUI(player);
 //            //profile
 //            ItemStack profile = new ItemStack(Material.PLAYER_HEAD);
 //            SkullMeta profile_meta = (SkullMeta) profile.getItemMeta();

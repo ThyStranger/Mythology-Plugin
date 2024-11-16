@@ -11,7 +11,6 @@ import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,7 +53,7 @@ public class Item {
         this.itemStack = new ItemStack(this.material,1);
         ItemMeta meta = this.obtainItemMeta(this.itemStack,this.name, this.abilityName, this.abilityDescription, this.lore);
         this.itemStack.setItemMeta(meta);
-        System.out.println(this.name+" ItemStack set, ItemStack null: "+this.itemStack.equals(null));
+        System.out.println(this.name+" ItemStack set");
     }
 
     public static void AddToListAll(Main plugin) {
@@ -132,10 +131,14 @@ public class Item {
 
     @Nullable
     public List<String> getAbilityDescription() {
-        return abilityDescription;
+        return this.abilityDescription;
     }
 
     public void setAbilityDescription(@Nullable List<String> abilityDescription) {
         this.abilityDescription = abilityDescription;
+    }
+
+    public ItemStack getItemStack(){
+        return this.itemStack;
     }
 }

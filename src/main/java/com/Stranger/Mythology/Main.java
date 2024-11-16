@@ -2,6 +2,7 @@ package com.Stranger.Mythology;
 
 import com.Stranger.Mythology.Commands.MenuCommand;
 import com.Stranger.Mythology.Commands.PrayCommand;
+import com.Stranger.Mythology.GUIs.GUIEvents;
 import com.Stranger.Mythology.Items.Item;
 import com.Stranger.Mythology.Items.ItemEvents;
 import com.Stranger.Mythology.PlayerDatabase.ConnectionListener;
@@ -84,7 +85,7 @@ public final class Main extends JavaPlugin implements Listener {
         }
         System.out.println("Database Connected: "+database.isConnected());
         Bukkit.getPluginManager().registerEvents(new ConnectionListener(this), this);
-        Bukkit.getPluginManager().registerEvents(new InGameEvents(), this);
+        Bukkit.getPluginManager().registerEvents(new GUIEvents(), this);
         Bukkit.getPluginManager().registerEvents(new ItemEvents(), this);
         getCommand("pray").setExecutor(new PrayCommand());
         getCommand("menu").setExecutor(new MenuCommand());

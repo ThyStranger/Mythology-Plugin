@@ -1,16 +1,14 @@
-package com.Stranger.Mythology;
+package com.Stranger.Mythology.GUIs;
 
-import com.Stranger.Mythology.GUIs.GUIs;
-import com.Stranger.Mythology.Trashcan.ItemSuperClass;
+import com.Stranger.Mythology.Items.Item;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class InGameEvents implements Listener {
-    GUIs GUI = new GUIs();
-    ItemSuperClass itemSuperClass = new ItemSuperClass();
+public class GUIEvents implements Listener {
+    com.Stranger.Mythology.GUIs.GUI GUI = new GUI();
 
 //    @EventHandler
 //    public void OnPlayerJoin(PlayerJoinEvent e){
@@ -24,11 +22,10 @@ public class InGameEvents implements Listener {
         Player player = (Player) e.getWhoClicked();
 
         //Clicking on 'open menu', opens menu page
-        if (e.getCurrentItem()!=null&&e.getCurrentItem().equals(itemSuperClass.viewmenu())){
+        if (e.getCurrentItem() != null && e.getCurrentItem().equals(Item.items.get("View Menu").itemStack)) {
             e.setCancelled(true);
             e.getWhoClicked().openInventory(GUI.MenuGUI(player));
         }
-
         //CLicking on menu
         if (ChatColor.translateAlternateColorCodes('&',e.getView().getTitle()).equals(ChatColor.BOLD+""+ChatColor.BLACK+"Your Journey on This World")&&e.getCurrentItem()!=null){
             e.setCancelled(true);

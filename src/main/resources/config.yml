@@ -38,3 +38,7 @@ items:
     lore:
       - "&d&o桃者，五木之精也，故压伏邪气者也。"
     material: "WOODEN_SWORD"
+
+  view_menu:
+    name: "View Menu"
+    material: "NETHER_STAR"
