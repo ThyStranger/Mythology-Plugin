@@ -21,10 +21,12 @@ public class Jin_Lan_Jia_Sha_Fang extends Item {
     }
 
     public void setItemStack() {
-        ItemMeta meta = super.itemStack.getItemMeta();
+        ItemStack item = super.getItemStack();
+        ItemMeta meta = item.getItemMeta();
         meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH,new AttributeModifier(new NamespacedKey("jin_lan_jiasha_fangzao","health"),10, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.CHEST));
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR,new AttributeModifier(new NamespacedKey("jin_lan_jiasha_fangzao","armor"),10, AttributeModifier.Operation.ADD_NUMBER,EquipmentSlotGroup.CHEST));
-        super.itemStack.setItemMeta(meta);
+        item.setItemMeta(meta);
+        super.changeItemStack(item);
     }
 
     @Override

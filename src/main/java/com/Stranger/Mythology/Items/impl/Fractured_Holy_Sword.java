@@ -20,11 +20,13 @@ public class Fractured_Holy_Sword extends Item {
 
     //@Override
     public void setItemStack() {
-        ItemMeta meta = super.itemStack.getItemMeta();
+        ItemStack item = super.getItemStack();
+        ItemMeta meta = item.getItemMeta();
         meta.addEnchant(Enchantment.SMITE,10,true);
         meta.addEnchant(Enchantment.SWEEPING_EDGE,10,true);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,new AttributeModifier(new NamespacedKey("fractured_holy_sword","damage"),15, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND));
-        super.itemStack.setItemMeta(meta);
+        item.setItemMeta(meta);
+        super.changeItemStack(item);
     }
 
     @Override

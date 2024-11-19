@@ -1,5 +1,6 @@
 package com.Stranger.Mythology.PlayerDatabase;
 
+import com.Stranger.Mythology.GUIs.MenuGUIs.MenuGUI;
 import com.Stranger.Mythology.Main;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,9 +11,9 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.sql.SQLException;
 
 
-public class ConnectionListener implements Listener {
+public class PlayerConnectionListener implements Listener {
     private Main main;
-    public ConnectionListener(Main main){
+    public PlayerConnectionListener(Main main){
         this.main = main;
     }
 
@@ -26,6 +27,8 @@ public class ConnectionListener implements Listener {
             player.kickPlayer("Your data cannot be loaded!");
         }
 
+        //Register MenuGUIs
+        MenuGUI.registerMenuGUIs(this.main,e.getPlayer());
     }
 
     @EventHandler

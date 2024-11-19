@@ -27,7 +27,7 @@ public class Item {
     @Nullable private String abilityName;
     @Nullable private List<String> abilityDescription;
     @Nullable private String abilityTrigger;
-    public ItemStack itemStack;
+    private ItemStack itemStack;
 
 //    private ItemStack itemStack;
 //    private ItemMeta itemMeta;
@@ -41,13 +41,13 @@ public class Item {
 
     public void registerItem(String identifier) {
         String itemPath = "items." + identifier;
-        this.name = this.plugin.getConfigFile().getString(itemPath + ".name");
-        this.lore = this.plugin.getConfigFile().getStringList(itemPath + ".lore");
-        this.abilityName = this.plugin.getConfigFile().getString(itemPath + ".ability_name");
-        this.abilityDescription = this.plugin.getConfigFile().getStringList(itemPath + ".ability_description");
-        this.abilityTrigger=this.plugin.getConfigFile().getString(itemPath+".ability_trigger");
+        this.name = this.plugin.getItemConfig().getString(itemPath + ".name");
+        this.lore = this.plugin.getItemConfig().getStringList(itemPath + ".lore");
+        this.abilityName = this.plugin.getItemConfig().getString(itemPath + ".ability_name");
+        this.abilityDescription = this.plugin.getItemConfig().getStringList(itemPath + ".ability_description");
+        this.abilityTrigger=this.plugin.getItemConfig().getString(itemPath+".ability_trigger");
 
-        this.material = Material.getMaterial(this.plugin.getConfigFile().getString(itemPath + ".material"));
+        this.material = Material.getMaterial(this.plugin.getItemConfig().getString(itemPath + ".material"));
         System.out.println(this.name+" material: "+this.material.toString());
 
         this.itemStack = new ItemStack(this.material,1);
@@ -58,11 +58,11 @@ public class Item {
 
     public static void AddToListAll(Main plugin) {
 //        System.out.println("List adding");
-//        System.out.println("Holy Sword key: "+plugin.getConfigFile().getString("items.fractured_holy_sword.name"));
-//        System.out.println("Jiasha key: "+plugin.getConfigFile().getString("items.jin_lan_jia_sha_fang.name"));
-        items.put(plugin.getConfigFile().getString("items.fractured_holy_sword.name"), new Fractured_Holy_Sword(plugin));
-        items.put(plugin.getConfigFile().getString("items.jin_lan_jia_sha_fang.name"),new Jin_Lan_Jia_Sha_Fang(plugin));
-        items.put(plugin.getConfigFile().getString("items.peach_wood_sword.name"),new Peach_Wood_Sword(plugin));
+//        System.out.println("Holy Sword key: "+plugin.getItemConfig().getString("items.fractured_holy_sword.name"));
+//        System.out.println("Jiasha key: "+plugin.getItemConfig().getString("items.jin_lan_jia_sha_fang.name"));
+        items.put(plugin.getItemConfig().getString("items.fractured_holy_sword.name"), new Fractured_Holy_Sword(plugin));
+        items.put(plugin.getItemConfig().getString("items.jin_lan_jia_sha_fang.name"),new Jin_Lan_Jia_Sha_Fang(plugin));
+        items.put(plugin.getItemConfig().getString("items.peach_wood_sword.name"),new Peach_Wood_Sword(plugin));
 
     }
 
@@ -81,7 +81,7 @@ public class Item {
             }
         }
         if (ability_name!=null) {
-            description.add(ChatColor.translateAlternateColorCodes('&', "&e&lITEM ABILITY:&r&f "+ability_name+"  &e&l"+this.abilityTrigger));
+            description.add(ChatColor.translateAlternateColorCodes('&', "&eITEM ABILITY:&r&f "+ability_name+"  &e&l"+this.abilityTrigger));
         }
         description=addElements.addToDescription(description,ability_description);
         if (!description.isEmpty()) {
@@ -140,5 +140,9 @@ public class Item {
 
     public ItemStack getItemStack(){
         return this.itemStack;
+    }
+
+    public void changeItemStack(ItemStack item){
+        this.itemStack=item;
     }
 }

@@ -2,16 +2,16 @@ package com.Stranger.Mythology;
 
 import com.Stranger.Mythology.Commands.MenuCommand;
 import com.Stranger.Mythology.Commands.PrayCommand;
+import com.Stranger.Mythology.GUIs.GUI;
 import com.Stranger.Mythology.GUIs.GUIEvents;
 import com.Stranger.Mythology.Items.Item;
 import com.Stranger.Mythology.Items.ItemEvents;
-import com.Stranger.Mythology.PlayerDatabase.ConnectionListener;
+import com.Stranger.Mythology.PlayerDatabase.PlayerConnectionListener;
 import com.Stranger.Mythology.PlayerDatabase.Database;
 import com.Stranger.Mythology.PlayerDatabase.PlayerManager;
 
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,7 +24,8 @@ import static com.Stranger.Mythology.Items.Item.items;
 public final class Main extends JavaPlugin implements Listener {
     private Database database;
     private PlayerManager playerManager = new PlayerManager();
-    private YamlConfiguration config;
+    private YamlConfiguration ItemConfig;
+    private YamlConfiguration GUIConfig;
 
     public Database getDatabase() {
         return database;
@@ -32,12 +33,13 @@ public final class Main extends JavaPlugin implements Listener {
     public PlayerManager getPlayerManager(){
         return playerManager;
     }
-    public YamlConfiguration getConfigFile() { return this.config; }
+    public YamlConfiguration getItemConfig() { return this.ItemConfig; }
+    public YamlConfiguration getGUIConfig() {
+        return GUIConfig;
+    }
 
     @Override
     public void onEnable() {
-        System.out.println("Colour"+ChatColor.RED.getChar());
-        System.out.println("Colour"+ChatColor.DARK_BLUE.getChar());
         //Plugin startup logic
         //Initiate YML files
         //System.out.println(getDataFolder());
@@ -46,26 +48,13 @@ public final class Main extends JavaPlugin implements Listener {
 
         //Initiate file, but how to read from the resource folder?
 
-        File configFile = new File(getDataFolder(), "config.yml");
-        System.out.println("File exist: "+configFile.exists());
+        File ItemConfigFile = new File(getDataFolder(), "ItemConfig.yml");
+        System.out.println("ItemConfigFile exist: "+ItemConfigFile.exists());
+        this.ItemConfig = YamlConfiguration.loadConfiguration(ItemConfigFile);
 
-        this.config = YamlConfiguration.loadConfiguration(configFile);
-
-//        File itemFormatFile = new File(getDataFolder(), "config.yml");
-//        try {
-//            config = FileManager.initiateFile(getDataFolder(), "config.yml");
-//        } catch (IOException e) {
-//            System.out.println("config.yml cannot be loaded :(");
-//            e.printStackTrace();
-//        }
-//        this.config = YamlConfiguration.loadConfiguration(itemFormatFile);
-//        //modifyItemFormatFile.set("",1);
-//
-//        try {
-//            this.config.save(itemFormatFile);
-//        } catch (IOException e) {
-//            System.out.println("configed_config.yml cannot be saved :(");
-//        }
+        File GUIConfigFile = new File(getDataFolder(),"GUIConfig.yml");
+        System.out.println("GUIConfigFile exist: "+GUIConfigFile.exists());
+        this.GUIConfig = YamlConfiguration.loadConfiguration(GUIConfigFile);
 
         //Initiate Database
         database = new Database();
@@ -84,11 +73,14 @@ public final class Main extends JavaPlugin implements Listener {
             e.printStackTrace();
         }
         System.out.println("Database Connected: "+database.isConnected());
-        Bukkit.getPluginManager().registerEvents(new ConnectionListener(this), this);
-        Bukkit.getPluginManager().registerEvents(new GUIEvents(), this);
+
+        GUI.registerAllGUIs();
+
+        Bukkit.getPluginManager().registerEvents(new PlayerConnectionListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new GUIEvents(this), this);
         Bukkit.getPluginManager().registerEvents(new ItemEvents(), this);
         getCommand("pray").setExecutor(new PrayCommand());
-        getCommand("menu").setExecutor(new MenuCommand());
+        getCommand("menu").setExecutor(new MenuCommand(this));
 
         Item.AddToListAll(this);
 //        System.out.println("Printing Registered Items");

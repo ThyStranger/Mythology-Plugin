@@ -1,0 +1,29 @@
+gui_types:
+  menu:
+
+    menu_page:
+
+      profile:
+        display_name: "Profile"
+        description:
+        material: "PLAYER_HEAD"
+        slot_number: 13
+
+      path_ascension:
+        display_name: "Path Ascension"
+        description:
+          - "&bCurrent Path: "
+          - ""
+          - "&2&o\"朝闻道，夕死可矣\""
+        material: "ENCHANTED_BOOK"
+        slot_number: 22
+
+      storage:
+        display_name: "Storage"
+        description:
+          - "A unique portable space gifted by the world"
+        material: "CHEST"
+        slot_number: 23
+
+      number_of_slots: 54
+      title: "Your journey in this world"

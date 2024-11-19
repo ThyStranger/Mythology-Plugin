@@ -1,11 +1,12 @@
 package com.Stranger.Mythology.Commands;
 
 import com.Stranger.Mythology.GUIs.GUI;
+import com.Stranger.Mythology.GUIs.MenuGUIs.MenuGUI;
+import com.Stranger.Mythology.Main;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
 public class MenuCommand implements CommandExecutor {
 //    private static obtainItemMeta getGUIMeta(obtainItemMeta meta, String display_name, String lore){
@@ -21,11 +22,17 @@ public class MenuCommand implements CommandExecutor {
 //        return meta;
 //    }
 
+    private Main plugin;
+
+    public MenuCommand(Main plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player player){
 //            Inventory menu = Bukkit.createInventory(player,54, ChatColor.BOLD+""+ChatColor.BLACK+"Your Journey on This World");
-            Inventory menu = new GUI().MenuGUI(player);
+            //Inventory menu = new GUIOld().MenuGUI(player);
 //            //profile
 //            ItemStack profile = new ItemStack(Material.PLAYER_HEAD);
 //            SkullMeta profile_meta = (SkullMeta) profile.getItemMeta();
@@ -64,7 +71,8 @@ public class MenuCommand implements CommandExecutor {
 //                if (menu.getItem(i)==null||menu.getItem(i).getType().equals(Material.AIR)) {menu.setItem(i,blank);}
 //            }
 
-            player.openInventory(menu);
+            MenuGUI.registerMenuGUIs(this.plugin,player);
+            player.openInventory(GUI.GUIs.get("menu").get(player.getName()+"_menu_page").getInventory());
         }
         return false;
     }

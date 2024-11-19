@@ -16,7 +16,7 @@ public class PrayCommand implements CommandExecutor {
     public boolean onCommand(CommandSender Sender, Command command, String s, String[] strings) {
         if (Sender instanceof Player player){
             for (Item item:items.values()){
-                player.getInventory().addItem(item.itemStack);
+                player.getInventory().addItem(item.getItemStack());
             }
 //            System.out.println(item);
 //            System.out.println(item.getAmount());
