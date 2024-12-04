@@ -25,5 +25,5 @@ gui_types:
         material: "CHEST"
         slot_number: 23
 
-      number_of_slots: 54
       title: "Your journey in this world"
+      number_of_slots: 54

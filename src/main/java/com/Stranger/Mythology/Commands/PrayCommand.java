@@ -5,7 +5,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import static com.Stranger.Mythology.Items.Item.items;
 
@@ -18,11 +17,6 @@ public class PrayCommand implements CommandExecutor {
             for (Item item:items.values()){
                 player.getInventory().addItem(item.getItemStack());
             }
-//            System.out.println(item);
-//            System.out.println(item.getAmount());
-//            player.getInventory().addItem(item);
-//            player.getInventory().addItem(itemSuperClassWest.jin_lan_jia_sha_FangZao());
-            //System.out.println(player.getInventory().getItemInMainHand());
         }
         return false;
     }

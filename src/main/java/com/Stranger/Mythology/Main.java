@@ -2,13 +2,16 @@ package com.Stranger.Mythology;
 
 import com.Stranger.Mythology.Commands.MenuCommand;
 import com.Stranger.Mythology.Commands.PrayCommand;
+import com.Stranger.Mythology.Commands.SpawnCommand;
+import com.Stranger.Mythology.Entities.Entities;
+import com.Stranger.Mythology.Entities.EntityEvents;
 import com.Stranger.Mythology.GUIs.GUI;
 import com.Stranger.Mythology.GUIs.GUIEvents;
 import com.Stranger.Mythology.Items.Item;
 import com.Stranger.Mythology.Items.ItemEvents;
-import com.Stranger.Mythology.PlayerDatabase.PlayerConnectionListener;
-import com.Stranger.Mythology.PlayerDatabase.Database;
-import com.Stranger.Mythology.PlayerDatabase.PlayerManager;
+import com.Stranger.Mythology.Players.PlayerConnectionListener;
+import com.Stranger.Mythology.Players.Database.Database;
+
 
 
 import org.bukkit.Bukkit;
@@ -23,19 +26,23 @@ import static com.Stranger.Mythology.Items.Item.items;
 
 public final class Main extends JavaPlugin implements Listener {
     private Database database;
-    private PlayerManager playerManager = new PlayerManager();
+    //private PlayerManagerOld playerManager = new PlayerManagerOld();
     private YamlConfiguration ItemConfig;
     private YamlConfiguration GUIConfig;
+    private YamlConfiguration EntityConfig;
 
     public Database getDatabase() {
         return database;
     }
-    public PlayerManager getPlayerManager(){
-        return playerManager;
-    }
+//    public PlayerManagerOld getPlayerManager(){
+//        return playerManager;
+//    }
     public YamlConfiguration getItemConfig() { return this.ItemConfig; }
     public YamlConfiguration getGUIConfig() {
         return GUIConfig;
+    }
+    public YamlConfiguration getEntityConfig() {
+        return EntityConfig;
     }
 
     @Override
@@ -55,6 +62,10 @@ public final class Main extends JavaPlugin implements Listener {
         File GUIConfigFile = new File(getDataFolder(),"GUIConfig.yml");
         System.out.println("GUIConfigFile exist: "+GUIConfigFile.exists());
         this.GUIConfig = YamlConfiguration.loadConfiguration(GUIConfigFile);
+
+        File EntityConfigFile = new File(getDataFolder(),"EntityConfig.yml");
+        System.out.println("EntityConfig.yml exist: "+EntityConfigFile);
+        this.EntityConfig = YamlConfiguration.loadConfiguration(EntityConfigFile);
 
         //Initiate Database
         database = new Database();
@@ -79,29 +90,21 @@ public final class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new PlayerConnectionListener(this), this);
         Bukkit.getPluginManager().registerEvents(new GUIEvents(this), this);
         Bukkit.getPluginManager().registerEvents(new ItemEvents(), this);
+        Bukkit.getPluginManager().registerEvents(new EntityEvents(),this);
+
         getCommand("pray").setExecutor(new PrayCommand());
         getCommand("menu").setExecutor(new MenuCommand(this));
+        getCommand("summon").setExecutor(new SpawnCommand());
 
         Item.AddToListAll(this);
 //        System.out.println("Printing Registered Items");
 //        for (String key:items.keySet()){
 //            System.out.println("Item Registered: "+key);
 //        }
+
+        Entities.registerAllEntities(this);
+
         System.out.println("All items registered:"+!items.isEmpty());
-
-
-        //Entities
-//        ArmorStand Angel=(ArmorStand) Bukkit.getWorld("world").spawnEntity(new Location(Bukkit.getWorld("world"),0,75,70), EntityType.ARMOR_STAND);
-//
-//        ItemStack fractured_holy_sword = new ItemStack(Material.GOLDEN_SWORD,1);
-//        obtainItemMeta meta = fractured_holy_sword.getItemMeta();
-//
-//        meta.setItemName("Holy Sword");
-//        meta.setUnbreakable(true);
-//        meta.setLore(Collections.singletonList("The Holy Sword used by Angels in the ancient war. Seems to process the ability to communicate with another dimension?"));
-//        meta.addEnchant(Enchantment.SHARPNESS,5,true);
-//        meta.addEnchant(Enchantment.SWEEPING_EDGE,5,true);
-//        fractured_holy_sword.setItemMeta(meta);
         System.out.println("Mythology is Enabled");
     }
 
@@ -110,6 +113,7 @@ public final class Main extends JavaPlugin implements Listener {
     public void onDisable() {
         // Plugin shutdown logic
         database.disconnect();
+        System.out.println("Mythology is Disabled");
     }
 
 

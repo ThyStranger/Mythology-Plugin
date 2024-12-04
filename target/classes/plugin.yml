@@ -7,5 +7,7 @@ commands:
     description: Pray!
   menu:
     description: Basic Information about you and the world
+  summon:
+    description: summon Something!
 
 

@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.*;
 
-public class GUI {
+public abstract class GUI {
     public static HashMap<String, HashMap<String, GUI>> GUIs=new HashMap<>();
 
     protected Main plugin;

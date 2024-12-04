@@ -1,4 +1,4 @@
-package com.Stranger.Mythology.PlayerDatabase;
+package com.Stranger.Mythology.Players.Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

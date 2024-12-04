@@ -22,7 +22,7 @@ public class MenuPage extends MenuGUI {
 
         //super.GUISetup.put(22,createItemStack("Path Ascension",Arrays.asList("&bCurrent Path: ","","&o\"朝闻道，朝闻道，夕死可矣\""), Material.ENCHANTED_BOOK));
         //super.GUISetup.put(23,createItemStack("Storage", List.of("A unique portable space gifted by the world"),Material.CHEST));
-        super.inventory.setItem(49, CloseButton);
+
         //super.createGUIInventory(54,"Your Journey In This World");
         //MenuGUI.MenuGUIs.put(player.getName()+"_MenuPage",this);
     }

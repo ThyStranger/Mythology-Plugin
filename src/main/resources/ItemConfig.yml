@@ -15,6 +15,7 @@ items:
       - "&eThe powerful Holy Sword used by the &o&lAngels &r&ein the ancient war."
       - "&eAlthough fractured, it still seems to be able to communicate with another dimension?"
     material: "GOLDEN_SWORD"
+    cooldown: 1
 
   jin_lan_jia_sha_fang:
     name: "锦襕袈裟(仿)"
@@ -33,11 +34,13 @@ items:
     name: "桃木剑"
     ability_name: "五雷轰顶"
     ability_description:
-      - "&e以&l天雷&r&e轰击方圆五米之物"
+      - "&e以&l天雷&r&e轰击方圆%radius%米之物"
     ability_trigger: "RIGHT CLICK"
     lore:
       - "&d&o桃者，五木之精也，故压伏邪气者也。"
     material: "WOODEN_SWORD"
+    radius: 5
+    cooldown: 5
 
   view_menu:
     name: "View Menu"

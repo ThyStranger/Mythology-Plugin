@@ -1,4 +1,4 @@
-package com.Stranger.Mythology.PlayerDatabase;
+package com.Stranger.Mythology.Players;
 
 import com.Stranger.Mythology.GUIs.MenuGUIs.MenuGUI;
 import com.Stranger.Mythology.Main;
@@ -20,12 +20,9 @@ public class PlayerConnectionListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
-        try {
-            CustomPlayer playerData = new CustomPlayer(main,player.getUniqueId());
-            main.getPlayerManager().addCustomPlayer(player.getUniqueId(),playerData);
-        } catch (SQLException ex) {
-            player.kickPlayer("Your data cannot be loaded!");
-        }
+        Players.addPlayer(player.getUniqueId(),new Players(main,player.getUniqueId()));
+//            PlayerManager playerData = new PlayerManager(main,player.getUniqueId());
+//            main.getPlayerManager().addPlayer(player.getUniqueId(),playerData);
 
         //Register MenuGUIs
         MenuGUI.registerMenuGUIs(this.main,e.getPlayer());
@@ -34,10 +31,10 @@ public class PlayerConnectionListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent e){
         try {
-            main.getPlayerManager().getCustomPlayer(e.getPlayer().getUniqueId()).updatePlayerInfo();
+            Players.getPlayer(e.getPlayer().getUniqueId()).updatePlayerInfo();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-        main.getPlayerManager().removeCustomPlayer(e.getPlayer().getUniqueId());
+        Players.removePlayer(e.getPlayer().getUniqueId());
     }
 }

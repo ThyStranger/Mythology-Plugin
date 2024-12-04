@@ -16,6 +16,8 @@ public class MenuGUI extends GUI {
 
     public MenuGUI(String identifier, Main plugin) {
         super("menu."+identifier,plugin);
+        super.inventory.setItem(49, CloseButton);
+
     }
 
     public static void registerMenuGUIs(Main plugin, Player player){

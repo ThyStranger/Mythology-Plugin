@@ -24,7 +24,7 @@ public class GUIEvents implements Listener {
 //        Player player = (Player) e.getWhoClicked();
 //
 //        //Clicking on 'open menu', opens menu page
-//        if (e.getCurrentItem() != null && e.getCurrentItem().equals(Item.items.get("View Menu").getItemStack())) {
+//        if (e.getCurrentItem() != null && e.getCurrentItem().equals(Item.items.get("View Menu").craftItemStack())) {
 //            e.setCancelled(true);
 //            e.getWhoClicked().openInventory(GUI.MenuGUI(player));
 //        }
@@ -42,7 +42,8 @@ public class GUIEvents implements Listener {
 //        }
         for (HashMap<String,GUI> GUISet:GUI.GUIs.values()){
             for (GUI theGUI:GUISet.values()){
-                theGUI.TriggerButton(e);
+                if (theGUI.getInventory()==e.getInventory())
+                    theGUI.TriggerButton(e);
             }
         }
     }
