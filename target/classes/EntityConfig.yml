@@ -1,0 +1,17 @@
+mobs:
+  imp:
+    name: "Imp"
+    description:
+      - "Wicked creatures from deep below"
+    type: "ZOMBIE"
+    health: 300
+    defence: 10
+    damage: 15
+    experience: 10
+    reinforcement_chance: 0.75
+
+abstract_entities:
+  peach_wood_sword_lightning:
+    name: "Peach Wood Sword Lightning"
+    type: "LIGHTNING_BOLT"
+    damage_scaling: 10
